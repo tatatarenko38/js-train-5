@@ -84,14 +84,14 @@ function findMinMax([firstElement, ...restElements]) {
   // Виводимо мінімальне та максимальне значення
   let min = firstElement;
   let max = firstElement;
-  for (let i = 0; i < restElements.lendth; i++) {
+  for (let i = 0; i < restElements.length; i++) {
     if (restElements[i] > max) {
       max = restElements[i];
     } else if (restElements[i] < min) {
       min = restElements[i];
     }
-    return min, max;
   }
+  console.log(min, max);
 }
 
 console.log("Завдання 6 ====================================");
@@ -129,12 +129,12 @@ function addTenToEach(array) {
   // Перебираємо масив за допомогою циклу for-in
   // Додаємо до поточного елемента 10 та додаємо результат в новий масив
   // Виводимо результат
-  let list = Array(array.lendth);
+  let list = Array(array.length);
   for (const arr in array) {
     array[arr] += 10;
   }
   list = array;
-  return list;
+  console.log(array);
 }
 
 console.log("Завдання 9 ====================================");
@@ -153,7 +153,7 @@ function swapMinMax(array) {
   let min = array[0];
   let maxIndex = 0;
   let minIndex = 0;
-  for (let i = 0; i < array.lendth; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (array[i] > max) {
       max = array[i];
       maxIndex = i;
@@ -161,10 +161,8 @@ function swapMinMax(array) {
       min = array[i];
       minIndex = i;
     }
-
-    [array[minIndex], array[maxIndex]] = [array[maxIndex], array[minIndex]];
   }
-
+  [array[minIndex], array[maxIndex]] = [array[maxIndex], array[minIndex]];
   return array;
 }
 
@@ -175,10 +173,17 @@ console.log(swapMinMax([1, 2, 3, 4, 5]));
 // Завдання 11: Функція приймає масив чисел. Поверніть новий масив, який містить тільки парні числа з оригінального масиву.
 function getEvenNumbers(arr) {
   // Створюємо пустий масив для зберігання результату
+  let result = [];
   // Проходимо через кожен елемент вхідного масиву
-  // Перевіряємо чи є число парним
-  // Якщо так, додаємо його до масиву результату
-  // Повертаємо масив результату
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      result = [...result, arr[i]];
+    }
+    // Перевіряємо чи є число парним
+    // Якщо так, додаємо його до масиву результату
+    // Повертаємо масив результату
+  }
+  return result;
 }
 console.log("Завдання 11 ====================================");
 console.log(getEvenNumbers([1, 2, 3, 4, 5, 6])); // Виведе [2, 4, 6]
@@ -186,9 +191,16 @@ console.log(getEvenNumbers([1, 2, 3, 4, 5, 6])); // Виведе [2, 4, 6]
 // Завдання 12: Функція приймає масив чисел. Поверніть новий масив, в якому всі числа помножені на їх індекс.
 function multiplyByIndex(arr) {
   // Створюємо пустий масив для зберігання результату
+  let result = [];
+
   // Проходимо через кожен елемент вхідного масиву
+  for (let i = 0; i < arr.length; i++) {
+    result = [...result, arr[i] * i];
+  }
   // Помножуємо число на його індекс і додаємо до масиву результату
+
   // Повертаємо масив результату
+  return result;
 }
 console.log("Завдання 12 ====================================");
 console.log(multiplyByIndex([1, 2, 3, 4, 5])); // Виведе [0, 2, 6, 12, 20]
@@ -196,7 +208,17 @@ console.log(multiplyByIndex([1, 2, 3, 4, 5])); // Виведе [0, 2, 6, 12, 20]
 // Завдання 13: Функція приймає масив чисел. Повертає новий масив, в якому всі числа більші за 10 замінені на рядок "Greater than 10", а решта чисел замінені на рядок "Less than or equal to 10".
 function replaceNumbers(arr) {
   // Створюємо пустий масив для зберігання результату
-  // Проходимо через кожен елемент вхідного масиву
+  let result = [];
+  // Проходимо через кожен елемент вхідного масивуfor
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 10) {
+      result = [...result, `Greater than 10`];
+    } else {
+      result = [...result, `Less than or equal to 10`];
+    }
+  }
+  return result;
+
   // Перевіряємо, чи число більше за 10
   // Якщо число більше за 10, додаємо рядок "Greater than 10" до масиву результату
   // Якщо число менше або дорівнює 10, додаємо рядок "Less than or equal to 10" до масиву результату
